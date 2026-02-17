@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SSD HOLDING | Websites • Software • IT Support • Marketing</title>
+    <meta name="description" content="SSD HOLDING builds websites and software, provides IT support, and runs digital marketing—fast, clean, and reliable." />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+         :root {
+            --bg: #0a0a0a;
+            --blue: #38bdf8;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --card: #0f172a;
+            --border: rgba(56, 189, 248, 0.20);
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        html,
+        body {
+            height: 100%;
+        }
+        
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Space Mono', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* FIX: flex-center -> center */
+            overflow-x: hidden;
+        }
+        /* Subtle grid overlay */
+        
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 48px 48px;
+            opacity: 0.25;
+            pointer-events: none;
+        }
+        
+        .wrap {
+            width: min(980px, 92vw);
+            padding: 48px 0;
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            align-items: flex-start;
+        }
+        
+        .logoRow {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .letter {
+            color: var(--blue);
+            font-size: clamp(2.4rem, 6vw, 4.8rem);
+            font-weight: 700;
+            opacity: 0;
+            display: inline-block;
+            transform: translateX(-20px);
+            animation: reveal 0.45s ease-out forwards;
+        }
+        
+        .gap {
+            width: 18px;
+        }
+        
+        .cursor {
+            width: 14px;
+            height: clamp(34px, 6vw, 64px);
+            background-color: var(--blue);
+            margin-left: 10px;
+            animation: blink 0.7s step-end infinite;
+        }
+        
+        @keyframes reveal {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+        /* Stagger */
+        
+        .l1 {
+            animation-delay: 0.10s
+        }
+        
+        .l2 {
+            animation-delay: 0.20s
+        }
+        
+        .l3 {
+            animation-delay: 0.30s
+        }
+        
+        .l4 {
+            animation-delay: 0.50s
+        }
+        
+        .l5 {
+            animation-delay: 0.60s
+        }
+        
+        .l6 {
+            animation-delay: 0.70s
+        }
+        
+        .l7 {
+            animation-delay: 0.80s
+        }
+        
+        .l8 {
+            animation-delay: 0.90s
+        }
+        
+        .l9 {
+            animation-delay: 1.00s
+        }
+        
+        .l10 {
+            animation-delay: 1.10s
+        }
+        
+        .tagline {
+            color: var(--muted);
+            font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+            max-width: 70ch;
+            opacity: 0;
+            transform: translateY(6px);
+            animation: fadeUp 0.6s ease-out forwards;
+            animation-delay: 1.25s;
+        }
+        
+        .prompt {
+            margin-top: 6px;
+            color: var(--text);
+            opacity: 0;
+            transform: translateY(6px);
+            animation: fadeUp 0.6s ease-out forwards;
+            animation-delay: 1.35s;
+        }
+        
+        .prompt span {
+            color: var(--blue);
+        }
+        
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+            opacity: 0;
+            transform: translateY(6px);
+            animation: fadeUp 0.6s ease-out forwards;
+            animation-delay: 1.45s;
+        }
+        
+        .btn {
+            border: 1px solid var(--border);
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform .12s ease, background .12s ease, border-color .12s ease;
+            user-select: none;
+        }
+        
+        .btnPrimary {
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--text);
+        }
+        
+        .btnSecondary {
+            background: transparent;
+            color: var(--text);
+        }
+        
+        .btn:hover {
+            transform: translateY(-1px);
+            border-color: rgba(56, 189, 248, 0.45);
+            background: rgba(56, 189, 248, 0.16);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 14px;
+            margin-top: 28px;
+            opacity: 0;
+            transform: translateY(8px);
+            animation: fadeUp 0.7s ease-out forwards;
+            animation-delay: 1.55s;
+        }
+        
+        .card {
+            grid-column: span 6;
+            background: rgba(15, 23, 42, 0.35);
+            border: 1px solid rgba(56, 189, 248, 0.14);
+            border-radius: 18px;
+            padding: 16px;
+            backdrop-filter: blur(6px);
+        }
+        
+        .card h3 {
+            margin: 0 0 8px 0;
+            font-size: 1rem;
+            color: var(--blue);
+        }
+        
+        .card p {
+            margin: 0 0 10px 0;
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .card ul {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            margin-top: 22px;
+            color: var(--muted);
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateY(8px);
+            animation: fadeUp 0.7s ease-out forwards;
+            animation-delay: 1.65s;
+        }
+        /* Responsive */
+        
+        @media (max-width: 720px) {
+            .card {
+                grid-column: span 12;
+            }
+        }
+        /* Reduced motion */
+        
+        @media (prefers-reduced-motion: reduce) {
+            .letter,
+            .tagline,
+            .prompt,
+            .actions,
+            .grid,
+            .footer {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+            .cursor {
+                animation: none;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="wrap" aria-label="SSD HOLDING landing page">
+        <section class="hero">
+            <div class="logoRow" aria-label="SSD HOLDING">
+                <span class="letter l1">S</span>
+                <span class="letter l2">S</span>
+                <span class="letter l3">D</span>
+                <span class="gap"></span>
+                <span class="letter l4">H</span>
+                <span class="letter l5">O</span>
+                <span class="letter l6">L</span>
+                <span class="letter l7">D</span>
+                <span class="letter l8">I</span>
+                <span class="letter l9">N</span>
+                <span class="letter l10">G</span>
+                <div class="cursor" aria-hidden="true"></div>
+            </div>
+
+            <p class="tagline">
+                Websites, software solutions, IT support, and digital marketing — built fast, clean, and reliable.
+            </p>
+
+            <div class="prompt">
+                <span>&gt;</span> Tell us what you need. We’ll ship a solution.
+            </div>
+
+            <div class="actions">
+                <a class="btn btnPrimary" href="#contact">Book a free call</a>
+                <a class="btn btnSecondary" href="#services">See services</a>
+            </div>
+        </section>
+
+        <section id="services" class="grid" aria-label="Services">
+            <div class="card">
+                <h3>01 web.build()</h3>
+                <p>Landing pages, business websites, redesigns.</p>
+                <ul>
+                    <li>Fast & responsive</li>
+                    <li>SEO-ready structure</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>02 software.ship()</h3>
+                <p>Custom tools, dashboards, automations.</p>
+                <ul>
+                    <li>APIs & integrations</li>
+                    <li>Maintainable code</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>03 it.support()</h3>
+                <p>Setup, maintenance, security, backups.</p>
+                <ul>
+                    <li>Monitoring & fixes</li>
+                    <li>Best-practice hardening</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>04 marketing.grow()</h3>
+                <p>SEO, ads, and content that converts.</p>
+                <ul>
+                    <li>Clear reporting</li>
+                    <li>Conversion-first approach</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact" class="footer" aria-label="Contact">
+            <div><span style="color:var(--blue)">&gt;</span> Contact: <strong>your@email.com</strong> • WhatsApp: <strong>+43 ...</strong></div>
+            <div style="margin-top:8px;">© <span id="year"></span> SSD HOLDING — Built with care.</div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
