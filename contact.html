@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SSD HOLDING | Contact</title>
+    <meta name="description" content="Contact SSD HOLDING to discuss a website, software, support, or marketing project." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+    <canvas id="codeRain" aria-hidden="true"></canvas>
+    <div class="bg-glow" aria-hidden="true"></div>
+
+    <header class="nav" aria-label="Main navigation">
+        <div class="nav__inner">
+            <a class="nav__brand" href="./index.html" aria-label="SSD HOLDING home">
+                <span class="nav__brandText">SSD HOLDING</span>
+                <span class="nav__cursor" aria-hidden="true"></span>
+            </a>
+
+            <nav class="nav__links" aria-label="Navigation links">
+                <a href="./services.html">Services</a>
+                <a href="./why-us.html">Why us</a>
+                <a href="./work.html">Work</a>
+                <a href="./reviews.html">Reviews</a>
+                <a href="./faq.html">FAQ</a>
+                <a class="nav__cta" href="./contact.html">Book a call</a>
+            </nav>
+
+            <button class="nav__menuBtn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+        </div>
+
+    </header>
+
+    <main class="wrap page-shell">
+        <section class="page-intro reveal">
+            <p class="kicker"><span class="gt">&gt;</span> let's.talk()</p>
+            <h1>Contact</h1>
+            <p class="page-subtitle">Tell us what you need and we’ll figure out the fastest, smartest next step.</p>
+        </section>
+
+        <section class="grid grid--2">
+            <div class="panel reveal">
+                <p class="contactLine"><span class="gt">&gt;</span> Email: <b>shjashari99@gmail.com</b></p>
+                <p class="contactLine"><span class="gt">&gt;</span> WhatsApp: <b>+43 660 5777671</b></p>
+                <p class="contactLine"><span class="gt">&gt;</span> Location: <b>Austria / EU</b></p>
+                <p class="contactLine"><span class="gt">&gt;</span> Response: <b>&lt; 24h</b></p>
+                <div class="miniCard">
+                    <p class="muted">Tip: You can replace this form with Calendly or an email workflow later.</p>
+                </div>
+            </div>
+
+            <div class="panel reveal">
+                <form id="leadForm" class="form" action="./mail.php" method="POST" novalidate>
+                    <label>
+                        <span>Name</span>
+                        <input type="text" name="name" id="name" placeholder="Your name" autocomplete="name" required />
+                    </label>
+
+                    <label>
+                        <span>Email</span>
+                        <input type="email" name="email" id="email" placeholder="Email address" autocomplete="email" required />
+                    </label>
+
+                    <label>
+                        <span>Company (optional)</span>
+                        <input type="text" name="company" id="company" placeholder="Company" autocomplete="organization" />
+                    </label>
+
+                    <label>
+                        <span>Message</span>
+                        <textarea name="message" id="msg" placeholder="What do you need?" required></textarea>
+                    </label>
+
+                    <button class="btn btn--primary" type="submit">Send message</button>
+                    <p id="formStatus" class="muted" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+
+        <footer class="footer reveal">
+            © <span id="year"></span> SSD HOLDING — Built with care.
+        </footer>
+    </main>
+
+    <script src="./app.js"></script>
+</body>
+
+</html>

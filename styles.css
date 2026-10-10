@@ -466,6 +466,10 @@ body::before {
     grid-template-columns: repeat(3, 1fr);
 }
 
+.grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
 .card {
     background: var(--panel);
     border: 1px solid rgba(56, 189, 248, 0.14);
@@ -763,13 +767,25 @@ html.js .reveal {
     .grid--3 {
         grid-template-columns: 1fr 1fr;
     }
+    .grid--4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .reviewLayout {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 760px) {
+    .page-shell {
+        padding-top: 130px;
+    }
     .grid--2 {
         grid-template-columns: 1fr;
     }
     .grid--3 {
+        grid-template-columns: 1fr;
+    }
+    .grid--4 {
         grid-template-columns: 1fr;
     }
     .nav__links {
