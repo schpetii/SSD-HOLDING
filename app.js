@@ -252,6 +252,85 @@
             // If you don’t have PHP hosting yet and want “no reload”, tell me and I’ll switch to fetch().
         });
     }
+    /**
+     * initCodeRain()
+     * Matrix-like code rain running in the background.
+     * Lightweight canvas animation, respects reduced motion.
+     */
+    function initCodeRain() {
+        const canvas = document.getElementById("codeRain");
+        if (!canvas) return;
+
+        // Respect reduced motion preferences
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduce) {
+            canvas.style.display = "none";
+            return;
+        }
+
+        const ctx = canvas.getContext("2d", { alpha: true });
+        let w = 0;
+        let h = 0;
+
+        // Characters you want to show
+        const chars =
+            "01<>/{}[]()=+-_*#@:$%&ABCDEFGHIJKLMNOPQRSTUVWXYZssd.holding web.build software.ship it.support marketing.grow";
+        const charArr = chars.split("");
+
+        let fontSize = 14; // adjust: 12–18 looks good
+        let columns = 0;
+        let drops = [];
+
+        function resize() {
+            // Real pixel size (for crisp canvas)
+            const dpr = window.devicePixelRatio || 1;
+            w = Math.floor(window.innerWidth);
+            h = Math.floor(window.innerHeight);
+
+            canvas.width = Math.floor(w * dpr);
+            canvas.height = Math.floor(h * dpr);
+            canvas.style.width = w + "px";
+            canvas.style.height = h + "px";
+
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            columns = Math.floor(w / fontSize);
+            drops = new Array(columns).fill(0).map(() => Math.random() * h);
+        }
+
+        function draw() {
+            // Fade the previous frame slightly (creates trailing effect)
+            ctx.fillStyle = "rgba(10, 10, 10, 0.08)";
+            ctx.fillRect(0, 0, w, h);
+
+            ctx.font = `${fontSize}px "Space Mono", monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = charArr[Math.floor(Math.random() * charArr.length)];
+                const x = i * fontSize;
+                const y = drops[i];
+
+                // Blue glow text
+                ctx.fillStyle = "rgba(56, 189, 248, 0.95)";
+                ctx.fillText(text, x, y);
+
+                // Move drop down
+                drops[i] = y + fontSize;
+
+                // Reset drop randomly when it goes off screen
+                if (drops[i] > h && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+            }
+
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener("resize", resize);
+        resize();
+        requestAnimationFrame(draw);
+    }
+
 
     /**
      * init()
@@ -266,6 +345,7 @@
         counters();
         testimonialsSlider();
         formUX();
+        initCodeRain(); // ✅ add this
     }
 
     window.addEventListener("load", init);

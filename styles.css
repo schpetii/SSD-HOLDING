@@ -43,6 +43,23 @@ a {
 }
 
 
+/* ===============================
+   BACKGROUND: CODE RAIN CANVAS
+=================================*/
+
+#codeRain {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    /* behind everything */
+    pointer-events: none;
+    opacity: 0.22;
+    /* adjust intensity */
+}
+
+
 /* Background glow */
 
 .bg-glow {
